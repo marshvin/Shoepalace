@@ -1,112 +1,68 @@
-import React, { useState } from 'react';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+// FeaturedProducts.js
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const ShoeCard = ({ name, image, price, rating }) => {
-  const [selectedRating, setSelectedRating] = useState(0);
-
-  const handleStarClick = (index) => {
-    setSelectedRating(index + 1);
-  };
-
+const ShoeCard = ({ productid, productname, image,ratings, price, onAddToCart }) => {
   return (
-    <div className="flex-shrink-0 max-w-xs mx-2 my-4 lg:my-0 lg:mx-4 bg-white shadow-lg rounded-lg overflow-hidden">
-      <img className="w-full h-48 object-cover object-center" src={image} alt={name} />
-      <div className="p-4">
-        <h3 className="text-lg font-semibold mb-2">{name}</h3>
+    <div className="flex-shrink-0 max-w-md mx-4 my-8 lg:my-0 lg:mx-6 bg-white shadow-lg rounded-lg overflow-hidden">
+      <img className="w-full h-64 object-cover object-center" src={image} alt={productname} />
+      <div className="p-6">
+        <h3 className="text-lg font-semibold mb-2">{productname}</h3>
         <p className="text-gray-700 mb-2">${price}</p>
         <div className="flex items-center mb-2">
-          <AiOutlineShoppingCart className="mr-1" />
-          <span className="text-gray-600">Add to Cart</span>
+          <button
+            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            onClick={() => onAddToCart({ productid, productname, price })}
+          >
+            Add to Cart
+          </button>
         </div>
+        {/* Additional logic for rendering stars if needed */}
         <div className="flex items-center">
-          {[1, 2, 3, 4, 5].map((index) => (
-            <span
-              key={index}
-              className={`text-yellow-500 cursor-pointer ${
-                index <= (selectedRating || rating) ? 'text-yellow-500' : 'text-gray-400'
-              }`}
-              onClick={() => handleStarClick(index)}
-            >
+          {Array.from({ length: ratings }, (_, index) => (
+            <span key={index} className="text-yellow-500">
               ★
             </span>
           ))}
-          <span className="text-yellow-500 ml-1">{selectedRating || rating}</span>
+          {Array.from({ length: 5 - ratings }, (_, index) => (
+            <span key={index} className="text-gray-400">
+              ★
+            </span>
+          ))}
         </div>
       </div>
     </div>
   );
 };
+
 const FeaturedProducts = () => {
-  const products = [
-    {
-      id: 1,
-      name: 'Comfort X Sneaker',
-      image: 'https://example.com/sneaker1.jpg',
-      price: 89.99,
-      rating: 4.5,
-    },
-    {
-      id: 2,
-      name: 'Running Pro 2000',
-      image: 'https://example.com/sneaker2.jpg',
-      price: 99.99,
-      rating: 4.8,
-    },
-    {
-      id: 3,
-      name: 'StreetStyle Elite',
-      image: 'https://example.com/sneaker3.jpg',
-      price: 79.99,
-      rating: 4.2,
-    },
-    {
-      id: 4,
-      name: 'Adventure Trail Shoe',
-      image: 'https://example.com/sneaker4.jpg',
-      price: 109.99,
-      rating: 4.7,
-    },
-    {
-        id: 5,
-        name: 'Comfort X Sneaker',
-        image: 'https://example.com/sneaker1.jpg',
-        price: 89.99,
-        rating: 4.5,
-      },
-      {
-        id: 6,
-        name: 'Running Pro 2000',
-        image: 'https://example.com/sneaker2.jpg',
-        price: 99.99,
-        rating: 4.8,
-      },
-      {
-        id: 7,
-        name: 'StreetStyle Elite',
-        image: 'https://example.com/sneaker3.jpg',
-        price: 79.99,
-        rating: 4.2,
-      },
-      {
-        id: 8,
-        name: 'Adventure Trail Shoe',
-        image: 'https://example.com/sneaker4.jpg',
-        price: 109.99,
-        rating: 4.7,
-      },
-  ];
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/api/products');
+        setProducts(response.data);
+      } catch (error) {
+        console.error('Error fetching product data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleAddToCart = (product) => {
+    setCart((prevCart) => [...prevCart, product]);
+  };
 
   return (
-    <div className="my-8">
-      <h2 className="text-2xl font-semibold mb-4">Featured Products</h2>
-      <div className=" flex flex-wrap justify-center ">
-        {products.map((product) => (
-          <ShoeCard key={product.id} {...product} />
-        ))}
-      </div>
+    <div className="my-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      {products.map((product) => (
+        <ShoeCard key={product.id} {...product} onAddToCart={handleAddToCart} />
+      ))}
     </div>
   );
 };
-
 
 export default FeaturedProducts;
