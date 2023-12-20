@@ -15,16 +15,11 @@ Welcome to Shoepalace, your ultimate destination for finding the latest and tren
 
 ## Installation
 
- **Clone the Repository:**
-
-   ```bash
-   git clone https://github.com/marshvin/shoepalace.git
-   cd shoepalace
-# Usage
+## Usage
 
 Explore the Shoepalace website to discover the perfect pair of shoes. Create an account to unlock additional features like order tracking and wishlists. Enjoy a hassle-free shopping experience with our secure checkout process.
 
-# Features
+## Features
 
 - **User Authentication:** Create an account and log in to access personalized features.
 - **Extensive Shoe Catalog:** Browse through a diverse collection of shoes for every occasion.
@@ -33,11 +28,11 @@ Explore the Shoepalace website to discover the perfect pair of shoes. Create an 
 - **User Account Management:** View order history, track shipments, and manage personal details.
 - **Responsive Design:** Enjoy a consistent and user-friendly experience across various devices.
 
-# Technologies Used
+## Technologies Used
 
 - **Frontend:** React, Tailwind CSS
 - **Backend:** Node.js, Express
 - **Database:** PostgreSQL
 
-# Deployment
+## Deployment
 
