@@ -39,10 +39,5 @@ Explore the Shoepalace website to discover the perfect pair of shoes. Create an 
 - **Backend:** Node.js, Express
 - **Database:** PostgreSQL
 
-# Contributing
+# Deployment
 
-We welcome contributions from the community! If you'd like to contribute to Shoepalace, please follow the [contributing guidelines](CONTRIBUTING.md).
-
-# License
-
-This project is licensed under the MIT License.
