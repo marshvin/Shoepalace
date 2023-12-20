@@ -1,9 +1,9 @@
 const { Client } = require('pg');
 
 const dbConfig = {
-  user: 'postgres',
-  host: 'localhost',
-  database: 'Products',
+  user: '',
+  host: '',
+  database: '',
   password: '',
 };
 
