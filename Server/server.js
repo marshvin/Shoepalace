@@ -1,21 +1,12 @@
 const express = require('express');
-const { Client } = require('pg');
-const cors = require('cors'); 
+const cors = require('cors');
+const client = require('./db');
 
 const app = express();
 const port = 3001; // Change this port if needed
 
 app.use(cors());
-
-const dbConfig = {
-  user: 'postgres',
-  host: 'localhost',
-  database: 'Products',
-  password: '1234',
-  };
-
-const client = new Client(dbConfig);
-client.connect();
+app.use(express.json());
 
 app.get('/api/products', async (req, res) => {
   try {
@@ -24,6 +15,21 @@ app.get('/api/products', async (req, res) => {
   } catch (error) {
     console.error('Error fetching product data:', error);
     res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+app.post('/api/signup', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const result = await client.query(
+      'INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *',
+      [email, password]
+    );
+
+    res.json({ success: true, user: result.rows[0] });
+  } catch (error) {
+    console.error('Error inserting into the database:', error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });
 
