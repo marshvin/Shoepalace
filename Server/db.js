@@ -4,7 +4,7 @@ const dbConfig = {
   user: 'postgres',
   host: 'localhost',
   database: 'Products',
-  password: '',
+  password: '1234',
 };
 
 const client = new Client(dbConfig);

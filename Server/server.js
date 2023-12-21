@@ -10,8 +10,12 @@ app.use(express.json());
 
 app.get('/api/products', async (req, res) => {
   try {
-    const result = await client.query('SELECT * FROM productinfo');
-    res.json(result.rows);
+    const result = await client.query('SELECT * FROM productinformat');
+    const products = result.rows.map((product) => ({
+      ...product,
+      image_data: product.image_data.toString('base64'), // Convert bytea to Base64
+    }));
+    res.json(products);
   } catch (error) {
     console.error('Error fetching product data:', error);
     res.status(500).json({ error: 'Internal Server Error' });

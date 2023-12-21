@@ -29,7 +29,7 @@ function Navbar() {
               <a href="#" className="text-white hover:text-gray-300">
                 Services
               </a>
-              <a href="#" className="text-white hover:text-gray-300">
+              <a href="/signup" className="text-white hover:text-gray-300">
                 SignUp
               </a>
             </div>

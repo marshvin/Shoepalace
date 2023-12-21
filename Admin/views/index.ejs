@@ -1,0 +1,30 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image and Product Upload</title>
+  <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Image and Product Upload</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="productname">Product Name:</label>
+      <input type="text" name="productname" required>
+      
+      <label for="price">Price:</label>
+      <input type="number" name="price" step="0.01" required>
+
+      <label for="ratings">Ratings:</label>
+      <input type="number" name="ratings" step="0.1" required>
+
+      <label for="image">Select Image:</label>
+      <input type="file" name="image" accept="image/*" required>
+
+      <button type="submit">Upload</button>
+    </form>
+  </div>
+</body>
+</html>

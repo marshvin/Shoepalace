@@ -1,19 +1,20 @@
 // FeaturedProducts.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Cart from './Cart'; // Assuming that Cart is in the same directory
 
-const ShoeCard = ({ productid, productname, image, ratings, price, onAddToCart }) => {
+
+const ShoeCard = ({ id, productname, image_data, ratings, price, onAddToCart }) => {
+  const imageUrl = `data:image/png;base64,${image_data}`;
   return (
     <div className="flex-shrink-0 max-w-md mx-4 my-8 lg:my-0 lg:mx-6 bg-white shadow-lg rounded-lg overflow-hidden">
-      <img className="w-full h-64 object-cover object-center" src={image} alt={productname} />
+      <img className="w-full h-64 object-cover object-center" src={imageUrl} alt={productname} />
       <div className="p-6">
         <h3 className="text-lg font-semibold mb-2">{productname}</h3>
         <p className="text-gray-700 mb-2">${price}</p>
         <div className="flex items-center mb-2">
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-            onClick={() => onAddToCart({ productid, productname, price })}
+            onClick={() => onAddToCart({ id, productname, price })}
           >
             Add to Cart
           </button>
@@ -58,11 +59,13 @@ const FeaturedProducts = () => {
   };
 
   return (
-    <div className="my-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-      {products.map((product) => (
-        <ShoeCard key={product.productid} {...product} onAddToCart={handleAddToCart} />
-      ))}
-      
+    <div className="my-8">
+      <h2 className="text-3xl font-semibold text-center mb-6">Featured Products</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {products.map((product) => (
+          <ShoeCard key={product.id} {...product} onAddToCart={handleAddToCart} />
+        ))}
+      </div>
     </div>
   );
 };
