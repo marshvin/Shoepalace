@@ -19,7 +19,7 @@ Follow these steps to set up and run Shoepalace on your local machine:
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/your-username/shoepalace.git
+    git clone https://github.com/your-username/Shoepalace.git
     cd shoepalace
     ```
 
