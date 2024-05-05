@@ -1,5 +1,4 @@
 # Shoepalace
-
 ## Overview
 
 Welcome to Shoepalace, your ultimate destination for finding the latest and trendiest shoes. Explore our vast collection of footwear, ranging from casual sneakers to stylish formal shoes. Shoepalace is built with cutting-edge technologies to offer a seamless shopping experience.
