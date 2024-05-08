@@ -24,13 +24,13 @@ function Navbar() {
                 Home
               </a>
               <a href="#" className="text-white hover:text-gray-300">
-                Products
+                Other Products
               </a>
               <a href="#" className="text-white hover:text-gray-300">
-                Services
+                About
               </a>
               <a href="/signup" className="text-white hover:text-gray-300">
-                SignUp
+                Contact
               </a>
             </div>
           </div>
@@ -67,10 +67,10 @@ function Navbar() {
                 Home
               </a>
               <a href="#" className="text-white block hover:text-gray-300">
-                About
+                Other Products
               </a>
               <a href="#" className="text-white block hover:text-gray-300">
-                Services
+                About
               </a>
               <a href="#" className="text-white block hover:text-gray-300">
                 Contact
