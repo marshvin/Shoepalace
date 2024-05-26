@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useCart } from '../CartContext';
 
 const ProductCard = () => {
   const [products, setProducts] = useState([]);
+  const { addToCart } = useCart();
 
   useEffect(() => {
-    // Fetch product data from the server
     const fetchProducts = async () => {
       try {
         const response = await axios.get('/api/products');
@@ -20,7 +21,6 @@ const ProductCard = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      {/* Show products in a single column on small screens, and in three columns on medium screens and above */}
       <div className="md:col-span-3 flex justify-center items-center mb-8">
         <div className="inline-block border-b border-gray-400 w-16 mr-4"></div>
         <h2 className="text-3xl text-purple-600 font-bold inline-block">Best selling Collections</h2>
@@ -35,7 +35,6 @@ const ProductCard = () => {
           />
           <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
           <div className="flex flex-col mb-2 md:flex-row md:items-center">
-            {/* On small screens, show each item of product details in a separate line */}
             <span className="text-gray-500 mb-2 md:mb-0 md:mr-2">
               Rating: {product.rating}
             </span>
@@ -44,14 +43,16 @@ const ProductCard = () => {
               Price: ${product.price}
             </span>
           </div>
-          <button className="bg-blue-500 text-white py-2 px-2 rounded">
+          <button 
+            className="bg-blue-500 text-white py-2 px-2 rounded"
+            onClick={() => addToCart(product)}
+          >
             Add to Cart
           </button>
         </div>
       ))}
     </div>
   );
-  
 };
 
 export default ProductCard;
