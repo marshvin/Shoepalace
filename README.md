@@ -90,7 +90,7 @@ Explore the Shoepalace website to discover the perfect pair of shoes. Create an 
 ## Technologies Used
 
 - **Frontend:** React, Tailwind CSS
-- **Backend:** Node.js, Express
+- **Backend:** Node.js, Express, AWS Cloud
 - **Database:** PostgreSQL
 
 ## Deployment
