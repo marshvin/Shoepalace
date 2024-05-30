@@ -1,7 +1,6 @@
 {
   "name": "shoepalace",
   "version": "0.1.0",
-  "homepage":"vercel url here" ,
   "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
