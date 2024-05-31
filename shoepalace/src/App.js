@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './pages/Homepage';
 import Signinpage from './pages/Signinpage';
 import Signuppage from './pages/Signuppage';
-import CartPage from './pages/Cartpage'; 
+import CartPage from './pages/CartPage'; 
 
 function App() {
   return (
