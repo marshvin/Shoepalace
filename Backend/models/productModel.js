@@ -1,6 +1,5 @@
-// models/productModel.js
-const pool = require('../utils/db');
 
+const pool = require('../utils/db');
 
 class Product {
   static async getAllProducts() {
