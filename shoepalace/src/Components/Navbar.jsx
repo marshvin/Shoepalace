@@ -20,26 +20,26 @@ function Navbar() {
           </div>
           <div className="hidden md:flex md:items-center md:justify-center">
             <div className="ml-10 flex items-baseline space-x-4">
-              <a href="#" className="text-white hover:text-gray-300">
+              <Link to="/" className="text-white hover:text-gray-300">
                 Home
-              </a>
-              <a href="#" className="text-white hover:text-gray-300">
+              </Link>
+              <Link to="/Otherproducts" className="text-white hover:text-gray-300">
                 Other Products
-              </a>
-              <a href="#" className="text-white hover:text-gray-300">
+              </Link>
+              <Link to="/about" className="text-white hover:text-gray-300">
                 About
-              </a>
-              <a href="#" className="text-white hover:text-gray-300">
+              </Link>
+              <Link to="/contact" className="text-white hover:text-gray-300">
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex items-center justify-end space-x-4 ">
-            <Link to="/signup"> 
-            <HiUser className="text-white text-2xl cursor-pointer" />
+            <Link to="/signup">
+              <HiUser className="text-white text-2xl cursor-pointer" />
             </Link>
-            <Link to="/Cart" className="text-white cursor-pointer">
-            <HiShoppingCart className="mr-1 text-2xl" />
+            <Link to="/cart" className="text-white cursor-pointer">
+              <HiShoppingCart className="mr-1 text-2xl" />
             </Link>
             <button
               onClick={toggleNavbar}
@@ -65,18 +65,18 @@ function Navbar() {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a href="#" className="text-white block hover:text-gray-300">
+              <Link to="/" className="text-white block hover:text-gray-300">
                 Home
-              </a>
-              <a href="#" className="text-white block hover:text-gray-300">
+              </Link>
+              <Link to="/Otherproducts" className="text-white block hover:text-gray-300">
                 Other Products
-              </a>
-              <a href="#" className="text-white block hover:text-gray-300">
+              </Link>
+              <Link to="/about" className="text-white block hover:text-gray-300">
                 About
-              </a>
-              <a href="#" className="text-white block hover:text-gray-300">
+              </Link>
+              <Link to="/contact" className="text-white block hover:text-gray-300">
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
         )}

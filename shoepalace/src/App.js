@@ -6,7 +6,8 @@ import Signinpage from './pages/Signinpage';
 import Signuppage from './pages/Signuppage';
 import CartPage from './pages/CartPage';
 import RouteWithLoader from './Components/RouteWithLoader';
-
+import Otherproducts from './Components/Otherproducts';
+import About from './Components/About';
 function App() {
   return (
     <Router>
@@ -14,6 +15,8 @@ function App() {
         <Route path="/" element={<RouteWithLoader component={Homepage} />} />
         <Route path="/signin" element={<RouteWithLoader component={Signinpage} />} />
         <Route path="/signup" element={<RouteWithLoader component={Signuppage} />} />
+        <Route path="/Otherproducts" element={<RouteWithLoader component={Otherproducts} />} />
+        <Route path="/about" element={<RouteWithLoader component={About} />} />
         <Route path="/cart" element={<RouteWithLoader component={CartPage} />} />
       </Routes>
     </Router>

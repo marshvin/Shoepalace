@@ -39,7 +39,7 @@ const ProductCard = () => {
     <div className="container mx-auto px-4">
       <div className="text-center my-8">
         <div className="inline-block border-b border-gray-400 w-8 mr-4"></div>
-        <h2 className="text-2xl sm:text-2xl text-purple-600 font-bold inline-block">Best Selling Collections</h2>
+        <h2 className="text-2xl sm:text-2xl text-purple-600 font-bold inline-block">Best Selling Shoes</h2>
         <div className="inline-block border-b border-gray-400 w-8 ml-4"></div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
