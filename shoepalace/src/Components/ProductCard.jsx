@@ -4,28 +4,43 @@ import { useCart } from '../CartContext';
 
 const ProductCard = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { addToCart } = useCart();
   const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const response = await axios.get(`${apiUrl}/api/products`);
         setProducts(response.data);
       } catch (error) {
+        setError('Error fetching products');
         console.error('Error fetching products:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchProducts();
   }, [apiUrl]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div className="container mx-auto px-4">
       <div className="text-center my-8">
-        <div className="inline-block border-b border-gray-400 w-16 mr-4"></div>
-        <h2 className="text-2xl sm:text-3xl text-purple-600 font-bold inline-block">Best Selling Collections</h2>
-        <div className="inline-block border-b border-gray-400 w-16 ml-4"></div>
+        <div className="inline-block border-b border-gray-400 w-8 mr-4"></div>
+        <h2 className="text-2xl sm:text-2xl text-purple-600 font-bold inline-block">Best Selling Collections</h2>
+        <div className="inline-block border-b border-gray-400 w-8 ml-4"></div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {products.map((product) => (
@@ -34,6 +49,7 @@ const ProductCard = () => {
               src={product.image_url}
               alt={product.name}
               className="w-full h-40 object-cover mb-4"
+              loading="lazy" // Add lazy loading for images
             />
             <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
             <div className="flex flex-col mb-2 md:flex-row md:items-center">

@@ -11,9 +11,6 @@ const SpecialOffer = () => {
         <p className="text-white mb-4">
           Buy 2 shoes Get 20% OFF
         </p>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Shop Now
-        </button>
       </div>
       <div className="lg:w-1/2">
         <img

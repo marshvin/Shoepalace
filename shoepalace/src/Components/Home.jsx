@@ -18,7 +18,7 @@ const Home = () => {
     <div style={containerStyle}>
       <div>
         <h1 className="text-4xl font-extrabold text-black mb-4">Welcome to Shoe Palace</h1>
-        <p className="text-lg font-bold text-gray-900 mb-8">
+        <p className="text-lg font-bold text-gray-900 mb-8 p-8">
           Explore the latest trends in footwear. Step into style and comfort with our premium shoe collection.
         </p>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

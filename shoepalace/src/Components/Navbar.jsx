@@ -29,16 +29,18 @@ function Navbar() {
               <a href="#" className="text-white hover:text-gray-300">
                 About
               </a>
-              <a href="/signup" className="text-white hover:text-gray-300">
-                Contact
+              <a href="#" className="text-white hover:text-gray-300">
+                Contact Us
               </a>
             </div>
           </div>
           <div className="flex items-center justify-end space-x-4 ">
-            <HiUser className="text-white cursor-pointer" />
+            <Link to="/signup"> 
+            <HiUser className="text-white text-2xl cursor-pointer" />
+            </Link>
             <Link to="/Cart" className="text-white cursor-pointer">
-        <HiShoppingCart className="mr-1" />
-      </Link>
+            <HiShoppingCart className="mr-1 text-2xl" />
+            </Link>
             <button
               onClick={toggleNavbar}
               className="text-white hover:text-gray-300 p-2 focus:outline-none focus:bg-gray-700 md:hidden"
@@ -73,7 +75,7 @@ function Navbar() {
                 About
               </a>
               <a href="#" className="text-white block hover:text-gray-300">
-                Contact
+                Contact Us
               </a>
             </div>
           </div>
