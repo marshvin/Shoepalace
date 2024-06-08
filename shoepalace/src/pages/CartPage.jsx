@@ -19,18 +19,18 @@ const CartPage = () => {
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <div className="flex">
-          <div className="flex-grow flex flex-col space-y-4">
+        <div className="flex flex-col lg:flex-row lg:space-x-4">
+          <div className="flex-grow flex flex-col space-y-4 mb-4 lg:mb-0">
             {cart.map((product, index) => (
-              <div key={index} className="bg-white shadow-lg rounded-lg p-4 flex items-start">
+              <div key={index} className="bg-white shadow-lg rounded-lg p-4 flex flex-col md:flex-row items-start md:items-center">
                 <img
                   src={product.image_url}
                   alt={product.name}
-                  className="w-20 h-20 object-cover mr-4"
+                  className="w-20 h-20 object-cover mb-4 md:mb-0 md:mr-4"
                 />
                 <div className="flex-grow">
                   <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
-                  <div className="flex flex-col mb-2 md:flex-row md:items-center">
+                  <div className="flex flex-col md:flex-row md:items-center mb-2">
                     <span className="text-gray-500 mb-2 md:mb-0 md:mr-2">
                       Rating: {product.rating}
                     </span>
@@ -52,14 +52,14 @@ const CartPage = () => {
                 </div>
                 <button
                   onClick={() => removeFromCart(index)}
-                  className="bg-red-500 text-white px-4 py-2 rounded-lg"
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg mt-4 md:mt-0"
                 >
                   Remove
                 </button>
               </div>
             ))}
           </div>
-          <div className="w-1/3 p-4 bg-gray-100 shadow-lg rounded-lg ml-4">
+          <div className="lg:w-1/3 w-full p-4 bg-gray-100 shadow-lg rounded-lg">
             <h2 className="text-xl font-semibold mb-4">Checkout</h2>
             <div className="flex justify-between mb-2">
               <span>Total Items:</span>
