@@ -19,15 +19,15 @@ function Navbar() {
             </a>
           </div>
           <div className="hidden md:flex md:items-center md:justify-center">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-baseline space-x-8">
               <Link to="/" className="text-white hover:text-gray-300">
                 Home
               </Link>
-              <Link to="/Otherproducts" className="text-white hover:text-gray-300">
-                Other Products
+              <Link to="/store" className="text-white hover:text-gray-300">
+                Store
               </Link>
               <Link to="/about" className="text-white hover:text-gray-300">
-                About
+                About Us
               </Link>
               <Link to="/contact" className="text-white hover:text-gray-300">
                 Contact Us
@@ -64,18 +64,18 @@ function Navbar() {
         </div>
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="px-4 pt-2 pb-3 space-y-1 sm:px-3">
               <Link to="/" className="text-white block hover:text-gray-300">
                 Home
               </Link>
               <Link to="/Otherproducts" className="text-white block hover:text-gray-300">
-                Other Products
+                Store
               </Link>
               <Link to="/about" className="text-white block hover:text-gray-300">
-                About
+                About Us
               </Link>
               <Link to="/contact" className="text-white block hover:text-gray-300">
-                Contact Us
+                Contact
               </Link>
             </div>
           </div>
