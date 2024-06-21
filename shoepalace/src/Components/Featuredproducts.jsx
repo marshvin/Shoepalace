@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 const Card = ({ image, title, paragraph, viewLink, price, rating }) => {
   const [showDetails, setShowDetails] = useState(false);
 
@@ -57,10 +57,11 @@ const CardList = () => {
           <Card key={index} {...card} />
         ))}
       </div>
-      <a href="https://github.com/marshvin"
-         className="animate-bounce focus:animate-none hover:animate-none inline-flex text-md font-medium bg-blue-700 mt-3 px-4 py-2 rounded-lg tracking-wide text-white">
-        <span className="ml-2">See more</span>
-      </a>
+      
+      <Link to="/store" className="animate-bounce focus:animate-none hover:animate-none inline-flex text-md font-medium bg-blue-700 mt-3 px-4 py-2 rounded-lg tracking-wide text-white">
+          
+      <span className="ml-2">See more</span>
+        </Link>
     </div>
   );
 };
