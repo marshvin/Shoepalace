@@ -36,7 +36,7 @@ const CardList = () => {
       rating: 5,
     },
     {
-      image: 'https://www.vans.com.au/media/catalog/product/cache/ab0ebc95ab75ea39cdb03ceaef3d12fc/v/n/vn-0d3hw00_wht_01.jpg',
+      image: 'https://scene7.zumiez.com/is/image/zumiez/product_main_medium/Vans-Authentic-White-Canvas-Skate-Shoes-_135644.jpg',
       title: 'Vans',
       price: 90,
       rating: 4,
