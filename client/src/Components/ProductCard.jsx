@@ -1,8 +1,9 @@
+// src/components/ProductCard.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useCart } from '../CartContext';
 import Navbar from '../Components/Navbar';
-import RouteWithLoader from '../Components/RouteWithLoader';
+
 
 const ProductCard = () => {
   const [products, setProducts] = useState([]);
@@ -25,7 +26,7 @@ const ProductCard = () => {
   }, [apiUrl]);
 
   return (
-    <RouteWithLoader component={() => (
+
       <div>
         <Navbar />
         <div className="container mx-auto px-4">
@@ -34,10 +35,9 @@ const ProductCard = () => {
             <h2 className="text-2xl sm:text-2xl text-purple-600 font-bold inline-block">Best Selling Shoes</h2>
             <div className="inline-block border-b border-gray-400 w-8 ml-4"></div>
           </div>
-          {error && <p className="text-red-500 text-center">{error}</p>}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {products.map((product) => (
-              <div key={product.id} className="bg-white shadow-lg rounded-lg p-4">
+              <div key={product._id} className="bg-white shadow-lg rounded-lg p-4">
                 <img
                   src={product.image_url}
                   alt={product.name}
@@ -65,7 +65,7 @@ const ProductCard = () => {
           </div>
         </div>
       </div>
-    )} />
+ 
   );
 };
 

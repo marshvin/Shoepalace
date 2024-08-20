@@ -1,36 +1,47 @@
-import React, { createContext, useContext, useState } from 'react';
+// src/CartContext.js
+import React, { createContext, useState, useContext } from 'react';
 
 const CartContext = createContext();
 
+export const useCart = () => useContext(CartContext);
+
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {
-    setCart((prevCart) => {
-      const existingProductIndex = prevCart.findIndex(item => item.id === product.id);
-      if (existingProductIndex !== -1) {
-        const updatedCart = [...prevCart];
-        updatedCart[existingProductIndex].quantity += 1;
-        return updatedCart;
+    setCartItems((prevItems) => {
+      // Check if the product is already in the cart based on the unique ID
+      const existingItem = prevItems.find((item) => item._id === product._id);
+
+      if (existingItem) {
+        // Increase the quantity of the existing item
+        return prevItems.map((item) =>
+          item._id === product._id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
       } else {
-        return [...prevCart, { ...product, quantity: 1 }];
+        // Add the new product to the cart
+        return [...prevItems, { ...product, quantity: 1 }];
       }
     });
   };
 
-  const removeFromCart = (index) => {
-    setCart(cart.filter((_, i) => i !== index));
+  const removeFromCart = (productId) => {
+    setCartItems((prevItems) =>
+      prevItems.filter((item) => item._id !== productId)
+    );
   };
 
-  const updateQuantity = (index, quantity) => {
-    setCart(cart.map((item, i) => i === index ? { ...item, quantity } : item));
+  const clearCart = () => {
+    setCartItems([]);
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, removeFromCart, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
 };
-
-export const useCart = () => useContext(CartContext);

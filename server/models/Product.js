@@ -7,6 +7,7 @@ const variationSchema = new mongoose.Schema({
 });
 
 const productSchema = new mongoose.Schema({
+  _id: String,
   name: String,
   brand: String,
   price: Number,
