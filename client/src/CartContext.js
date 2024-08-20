@@ -37,9 +37,18 @@ export const CartProvider = ({ children }) => {
     setCartItems([]);
   };
 
+  // New function to update a cart item based on its ID
+  const updateCartItem = (productId, updatedProperties) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item._id === productId ? { ...item, ...updatedProperties } : item
+      )
+    );
+  };
+
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, clearCart }}
+      value={{ cartItems, addToCart, removeFromCart, clearCart, updateCartItem }}
     >
       {children}
     </CartContext.Provider>
