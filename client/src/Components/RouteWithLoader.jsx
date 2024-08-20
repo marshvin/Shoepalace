@@ -9,10 +9,22 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
       setLoading(false);
     };
 
-    window.addEventListener('load', handleLoad);
+    // For network and async data
+    const loadData = async () => {
+      try {
+        // Simulate data fetching or other async tasks
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        handleLoad();
+      } catch (error) {
+        console.error('Error loading data:', error);
+        setLoading(false); // Stop loading even if there's an error
+      }
+    };
+
+    loadData();
 
     return () => {
-      window.removeEventListener('load', handleLoad);
+      setLoading(false); // Ensure loading state is updated on unmount
     };
   }, []);
 
