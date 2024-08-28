@@ -11,6 +11,10 @@ app.use(cors());
 
 // Middleware to parse JSON
 app.use(express.json());
+// Ping endpoint to keep the server awake
+app.get('/ping', (req, res) => {
+  res.send('Server is awake!');
+});
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
