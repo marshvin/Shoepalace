@@ -7,7 +7,7 @@ import Signuppage from './pages/Signuppage';
 import CartPage from './pages/CartPage';
 import RouteWithLoader from './Components/RouteWithLoader';
 import Storepage from './pages/Storepage';
-import AboutPage from './pages/AboutPage';
+import AboutPage from './pages/AboutPage'; 
 
 function App() {
   return (

@@ -10,16 +10,12 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (product) => {
     setCartItems((prevItems) => {
-      // Check if the product is already in the cart based on the unique ID
+      // Check if the product is already in the cart
       const existingItem = prevItems.find((item) => item._id === product._id);
 
       if (existingItem) {
-        // Increase the quantity of the existing item
-        return prevItems.map((item) =>
-          item._id === product._id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
+        // If item exists, don't modify the cart
+        return prevItems;
       } else {
         // Add the new product to the cart
         return [...prevItems, { ...product, quantity: 1 }];

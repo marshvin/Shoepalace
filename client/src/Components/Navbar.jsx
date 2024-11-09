@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { HiUser, HiShoppingCart } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
+import { useCart } from '../CartContext';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { cartItems } = useCart();
+
+  const cartItemsCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
@@ -38,8 +42,13 @@ function Navbar() {
             <Link to="/signup">
               <HiUser className="text-white text-2xl cursor-pointer" />
             </Link>
-            <Link to="/cart" className="text-white cursor-pointer">
+            <Link to="/cart" className="text-white cursor-pointer relative">
               <HiShoppingCart className="mr-1 text-2xl" />
+              {cartItemsCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartItemsCount}
+                </span>
+              )}
             </Link>
             <button
               onClick={toggleNavbar}
