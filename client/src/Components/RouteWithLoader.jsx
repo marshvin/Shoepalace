@@ -24,7 +24,7 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
     loadData();
 
     return () => {
-      setLoading(false); // Ensure loading state is updated on unmount
+      setLoading(false);  
     };
   }, []);
 
