@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "aws-sdk": "^2.1692.0",
     "cors": "^2.8.5",
