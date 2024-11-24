@@ -21,7 +21,19 @@ mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-  .then(() => console.log('MongoDB connected'))
+  .then(() => {
+    console.log('MongoDB connected');
+    
+    // Keep connection alive
+    setInterval(async () => {
+      try {
+        await mongoose.connection.db.command({ ping: 1 });
+        console.log('MongoDB connection is alive');
+      } catch (error) {
+        console.error('Error pinging MongoDB:', error);
+      }
+    }, 60000); // Ping every 60 seconds
+  })
   .catch((error) => console.error('MongoDB connection error:', error));
 
 // Use product routes
